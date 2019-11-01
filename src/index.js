@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { Card } from './components/card/Card';
+import { Form } from './components/form/Form';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+function App() {
+    const [formData, setFormData] = useState({});
+    const [cardFlipped, setCardFlipped] = useState(false);
+
+    useEffect(() => {}, [cardFlipped]);
+
+    return (
+        <React.Fragment>
+            <Card formData={formData} cardFlipped={cardFlipped} />
+            <Form setFormData={setFormData} setCardFlipped={setCardFlipped} cardFlipped={cardFlipped} />
+        </React.Fragment>
+    );
+}
+
+const rootElement = document.getElementById('root');
+ReactDOM.render(<App />, rootElement);
