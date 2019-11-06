@@ -7,4 +7,4 @@ Interactive form for credit card on react with:
 
 See Live: https://codesandbox.io/s/react-credit-card-form-lreel
 
-![](credit-card-image.png)
+![](credit-card-demo.png)
