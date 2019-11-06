@@ -53,8 +53,9 @@ export const BackSide = styled(Side)`
 
 export const BlackLine = styled.div`
     position: relative;
-    width: 100%;
+    width: calc(100% + 40px);
     height: 40px;
     background-color: black;
     top: 30px;
+    left: -20px;
 `;

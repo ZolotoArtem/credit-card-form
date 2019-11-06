@@ -1,29 +1,9 @@
 import React from 'react';
 import { useFormik } from 'formik';
 
-import { Wrapper, Button, Input, InputWrapper, Label, MaskedInput } from './styles';
+import { Wrapper, Button, Input, InputWrapper, Label } from './styles';
 
-const cardNumberMask = [
-    /\d/,
-    /\d/,
-    /\d/,
-    /\d/,
-    ' ',
-    /\d/,
-    /\d/,
-    /\d/,
-    /\d/,
-    ' ',
-    /\d/,
-    /\d/,
-    /\d/,
-    /\d/,
-    ' ',
-    /\d/,
-    /\d/,
-    /\d/,
-    /\d/,
-];
+const cardNumberMask = '9999 9999 9999 9999';
 
 export const Form = ({ setFormData, cardFlipped, setCardFlipped }) => {
     const formik = useFormik({
@@ -32,8 +12,7 @@ export const Form = ({ setFormData, cardFlipped, setCardFlipped }) => {
             holderName: '',
             expires: '',
             CVV: '',
-            // expireMonth: '',
-            // expireYear: '',
+            payService: '',
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
@@ -64,16 +43,16 @@ export const Form = ({ setFormData, cardFlipped, setCardFlipped }) => {
         <Wrapper onSubmit={formik.handleSubmit}>
             <InputWrapper gridArea="number">
                 <Label htmlFor="cardNumber">Card Number</Label>
-                <MaskedInput
+                <Input
                     id="cardNumber"
                     name="cardNumber"
                     type="text"
                     onChange={formik.handleChange}
                     value={formik.values.cardNumber}
                     mask={cardNumberMask}
-                    placeholderChar={'#'}
-                    placeholder={'#### #### #### ####'}
+                    maskChar={'#'}
                     onBlur={validateCardNumber}
+                    placeholder={'#### #### #### ####'}
                 />
             </InputWrapper>
             <InputWrapper gridArea="name">
@@ -84,25 +63,23 @@ export const Form = ({ setFormData, cardFlipped, setCardFlipped }) => {
                     type="text"
                     onChange={formik.handleChange}
                     value={formik.values.holderName}
-                    mask={[]}
-                    guide={false}
                 />
             </InputWrapper>
             <InputWrapper gridArea="expires">
                 <Label htmlFor="expires">Expiration Date</Label>
-                <MaskedInput
+                <Input
                     id="expires"
                     name="expires"
                     type="text"
                     onChange={formik.handleChange}
                     value={formik.values.expires}
-                    mask={[/\d/, /\d/, '/', /\d/, /\d/]}
+                    mask={'99/99'}
                     placeholder={'MM/YY'}
                 />
             </InputWrapper>
             <InputWrapper gridArea="cvv">
                 <Label htmlFor="CVV">CVV</Label>
-                <MaskedInput
+                <Input
                     id="CVV"
                     name="CVV"
                     type="text"
@@ -110,7 +87,8 @@ export const Form = ({ setFormData, cardFlipped, setCardFlipped }) => {
                     value={formik.values.CVV}
                     onFocus={flipCard}
                     onBlur={flipCard}
-                    mask={[/\d/, /\d/, /\d/]}
+                    mask={'999'}
+                    maskChar={'#'}
                     placeholder={'###'}
                 />
             </InputWrapper>

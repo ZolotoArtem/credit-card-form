@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import InputMask from 'react-input-mask';
-import MaskedInput from 'react-text-mask';
 
 export const Wrapper = styled.div`
     position: relative;
@@ -41,7 +40,7 @@ export const Button = styled.button`
     grid-area: ${props => props.gridArea};
 `;
 
-export const Input = styled(MaskedInput)`
+export const Input = styled(InputMask)`
     width: 100%;
     height: 50px;
     border-radius: 5px;

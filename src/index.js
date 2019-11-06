@@ -8,8 +8,6 @@ function App() {
     const [formData, setFormData] = useState({});
     const [cardFlipped, setCardFlipped] = useState(false);
 
-    useEffect(() => {}, [cardFlipped]);
-
     return (
         <React.Fragment>
             <Card formData={formData} cardFlipped={cardFlipped} />

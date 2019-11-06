@@ -2,13 +2,11 @@ import React from 'react';
 
 import { Wrapper, Title, Name } from './styles';
 
-export const CardExpire = ({ month, year }) => {
+export const CardExpire = ({ expires }) => {
     return (
         <Wrapper>
             <Title>Expires</Title>
-            <Name>
-                {month} / {year}
-            </Name>
+            <Name>{expires}</Name>
         </Wrapper>
     );
 };
